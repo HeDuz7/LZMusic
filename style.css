@@ -79,7 +79,6 @@ body {
     padding: 20px;
     background: radial-gradient(circle, rgba(34, 125, 153, 1) 0%, rgba(43, 43, 43, 1) 100%);
     color: #f2f2f2;
-    height: 240px;
   }
   
   .biblioteca h2 {
@@ -95,6 +94,12 @@ body {
     padding: 5px 10px;
     border-bottom: 1px solid #ccc;
     cursor: pointer;
+  }
+
+  .playlists {
+    padding: 20px;
+    background: radial-gradient(circle, rgba(34, 125, 153, 1) 0%, rgba(43, 43, 43, 1) 100%);
+    color: #f2f2f2;
   }
   
   footer {

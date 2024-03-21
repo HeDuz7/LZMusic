@@ -1,5 +1,4 @@
 // Código JavaScript para tocar músicas, criar playlists e gerenciar a biblioteca musical
-
 // Objeto para armazenar as músicas
 const musicas = [
     {
@@ -34,6 +33,7 @@ function tocarMusica(musica) {
   
   // Crie um novo elemento de áudio
   audioElement = new Audio(musica.url);
+  
   
   // Atualize a interface com as informações da música tocada
   const playerInfo = document.querySelector(".player");
@@ -83,3 +83,32 @@ playButton.addEventListener("click", () => tocarMusica(musicas[0])); // Exemplo:
 pauseButton.addEventListener("click", pausarMusica);
 stopButton.addEventListener("click", pararMusica);  
 
+
+const playlists = [];
+
+function criarPlaylist(nome, descricao) {
+  const novaPlaylist = {
+    nome,
+    descricao,
+    musicas: []
+  };
+  playlists.push(novaPlaylist);
+  // Atualizar a interface para mostrar a nova playlist
+}
+
+function adicionarMusicaPlaylist(musica, nomePlaylist) {
+  const playlist = playlists.find(p => p.nome === nomePlaylist);
+  if (playlist) {
+    playlist.musicas.push(musica);
+    // Atualizar a interface para mostrar a música adicionada na playlist
+  }
+}
+
+const playlistsElement = document.querySelector(".playlists ul");
+playlists.forEach(playlist => {
+  const playlistItem = document.createElement("li");
+  playlistItem.textContent = playlist.nome;
+  // Adicionar eventos para mostrar/editar/remover a playlist
+
+  playlistsElement.appendChild(playlistItem);
+});
