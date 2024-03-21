@@ -22,12 +22,64 @@ const musicas = [
     }
   ];
   
-  // Função para tocar uma música
-  function tocarMusica(musica) {
-    // Utilize a API `Audio` do JavaScript para tocar a música
-    const audio = new Audio(musica.url);
-    audio.play();
+let audioElement = null; // Elemento de áudio atual
+
+// Função para tocar uma música
+function tocarMusica(musica) {
+  
+  // Pare a música tocando atualmente (se houver)
+  if (audioElement) {
+    audioElement.pause();
+  }
+  
+  // Crie um novo elemento de áudio
+  audioElement = new Audio(musica.url);
+  
+  // Atualize a interface com as informações da música tocada
+  const playerInfo = document.querySelector(".player");
+  playerInfo.querySelector("h2").textContent = musica.nome;
+  playerInfo.querySelector("p:nth-child(2)").textContent = musica.artista;
+  playerInfo.querySelector("p:nth-child(3)").textContent = musica.album;
+
+  // Adicione eventos para controlar a reprodução
+  audioElement.addEventListener("play", () => {
+    document.querySelector(".play").style.display = "none";
+    document.querySelector(".pause").style.display = "inline";
+  });
+  audioElement.addEventListener("pause", () => {
+    document.querySelector(".play").style.display = "inline";
+    document.querySelector(".pause").style.display = "none";
+  });
+  audioElement.addEventListener("ended", () => {
+    audioElement = null; // Limpa o elemento de áudio atual
+    // Opcional: tocar a próxima música da lista
+  });
+
+  // Toque a música
+  audioElement.play();
 }
-  
-    // Atualize a interface com as informações da música
-  
+
+// Funções para controlar a reprodução (pause, stop)
+function pausarMusica() {
+  if (audioElement) {
+    audioElement.pause();
+  }
+}
+
+function pararMusica() {
+  if (audioElement) {
+    audioElement.pause();
+    audioElement.currentTime = 0; // Reinicia o tempo de reprodução
+  }
+}
+
+// Selecione os botões de controle na interface
+const playButton = document.querySelector(".play");
+const pauseButton = document.querySelector(".pause");
+const stopButton = document.querySelector(".stop");
+
+// Adicione eventos aos botões de controle
+playButton.addEventListener("click", () => tocarMusica(musicas[0])); // Exemplo: toca a primeira música
+pauseButton.addEventListener("click", pausarMusica);
+stopButton.addEventListener("click", pararMusica);  
+
