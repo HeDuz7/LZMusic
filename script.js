@@ -15,7 +15,7 @@ const musicas = [
     },
     {
       nome: "Música 3",
-      artista: "Artista 3",
+      artista: "MC Davi",
       album: "Álbum 3",
       url: "msc/Pagodeiro2.mp3"
     }
@@ -111,4 +111,42 @@ playlists.forEach(playlist => {
   // Adicionar eventos para mostrar/editar/remover a playlist
 
   playlistsElement.appendChild(playlistItem);
+});
+
+function carregarBiblioteca() {
+  // Utilize APIs de arquivos ou bancos de dados locais para carregar as músicas
+  // Crie objetos JavaScript para cada música com informações como nome, artista, álbum e URL
+  // Armazene as músicas em um array ou objeto para facilitar a manipulação
+
+  // Atualize a interface para mostrar a biblioteca de músicas
+}
+
+function filtrarMusicas(termo) {
+  // Utilize a função `filter` do JavaScript para filtrar as músicas pelo termo de pesquisa
+  // Exiba apenas as músicas que correspondem ao filtro na interface
+
+  // Opcional: implemente filtros adicionais por artista, álbum e gênero
+}
+
+function adicionarMusicaBiblioteca(musica) {
+  // Utilize APIs de arquivos ou bancos de dados locais para adicionar a música
+  // Atualize a interface para mostrar a música adicionada na biblioteca
+
+  // Opcional: mostre uma mensagem de sucesso
+}
+
+function removerMusicaBiblioteca(musica) {
+  // Utilize APIs de arquivos ou bancos de dados locais para remover a música
+  // Atualize a interface para remover a música da biblioteca
+
+  // Opcional: mostre uma mensagem de confirmação
+}
+
+const bibliotecaElement = document.querySelector(".biblioteca ul");
+musicas.forEach(musica => {
+  const musicaItem = document.createElement("li");
+  musicaItem.textContent = musica.nome;
+  // Adicionar eventos para tocar, adicionar à playlist, remover da biblioteca
+
+  bibliotecaElement.appendChild(musicaItem);
 });
